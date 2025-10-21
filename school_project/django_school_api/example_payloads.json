@@ -1,0 +1,288 @@
+{
+  "user_routes": {
+    "sign_up": {
+      "method": "POST",
+      "url": "/admin/api/v_1/user/sign_up/",
+      "payload": {
+        "phone": "+1234567890",
+        "email": "john.student@school.com",
+        "password": "password123",
+        "role_id": "68eb4750196f800c4f0f0c18",
+        "name": "John Student",
+        "address": "123 Student Street"
+      }
+    },
+    "sign_in": {
+      "method": "POST",
+      "url": "/admin/api/v_1/user/sign_in/",
+      "payload": {
+        "email": "john.student@school.com",
+        "password": "password123"
+      }
+    },
+    "update": {
+      "method": "PUT",
+      "url": "/admin/api/v_1/user/update/",
+      "payload": {
+        "user_id": 1,
+        "phone": "+1234567890",
+        "email": "john.student@school.com",
+        "password": "newpassword123",
+        "role_id": "68eb4753196f800c4f0f0c19",
+        "name": "John Updated Student",
+        "address": "456 Updated Street",
+        "status": true,
+        "student_id": "STU002"
+      }
+    },
+    "delete": {
+      "method": "POST",
+      "url": "/admin/api/v_1/user/delete/",
+      "payload": {
+        "user_id": 1
+      },
+      "note": "User deletion uses user_id (integer), not MongoDB ObjectId"
+    }
+  },
+  "role_routes": {
+    "create": {
+      "method": "POST",
+      "url": "/admin/api/v_1/role/create/",
+      "payload": {
+        "name": "Principal"
+      }
+    },
+    "update": {
+      "method": "PUT",
+      "url": "/admin/api/v_1/role/update/",
+      "payload": {
+        "id": "68ebb23bf134573e945cca71",
+        "name": "Updated Principal"
+      }
+    },
+    "delete": {
+      "method": "POST",
+      "url": "/admin/api/v_1/role/delete/",
+      "payload": {
+        "id": "68ebb23bf134573e945cca71"
+      }
+    }
+  },
+  "notice_routes": {
+    "create": {
+      "method": "POST",
+      "url": "/admin/api/v_1/notice/create/",
+      "payload": {
+        "title": "School Holiday Notice",
+        "content": "School will be closed on Monday for holiday.",
+        "status": true
+      }
+    },
+    "update": {
+      "method": "PUT",
+      "url": "/admin/api/v_1/notice/update/",
+      "payload": {
+        "id": "68eb4767196f800c4f0f0c1b",
+        "title": "Updated Holiday Notice",
+        "content": "School will be closed on Monday and Tuesday for holiday.",
+        "status": false
+      }
+    },
+    "delete": {
+      "method": "POST",
+      "url": "/admin/api/v_1/notice/delete/",
+      "payload": {
+        "id": "68eb4767196f800c4f0f0c1b"
+      }
+    }
+  },
+  "class_routes": {
+    "create": {
+      "method": "POST",
+      "url": "/admin/api/v_1/class/create/",
+      "payload": {
+        "name": "Mathematics"
+      }
+    },
+    "update": {
+      "method": "PUT",
+      "url": "/admin/api/v_1/class/update/",
+      "payload": {
+        "id": "68eb475f196f800c4f0f0c1a",
+        "name": "Advanced Mathematics"
+      }
+    },
+    "delete": {
+      "method": "POST",
+      "url": "/admin/api/v_1/class/delete/",
+      "payload": {
+        "class_id": "68eb475f196f800c4f0f0c1a"
+      }
+    }
+  },
+  "attendance_routes": {
+    "create": {
+      "method": "POST",
+      "url": "/admin/api/v_1/attendance/create/",
+      "payload": {
+        "user": 1,
+        "approve_by": 2,
+        "class_obj": "68eb475f196f800c4f0f0c1a",
+        "checkIn_time": "2025-10-12T08:00:00",
+        "checkOut_time": "2025-10-12T10:00:00"
+      }
+    },
+    "update": {
+      "method": "PUT",
+      "url": "/admin/api/v_1/attendance/update/",
+      "payload": {
+        "id": "68eb476a196f800c4f0f0c1c",
+        "user": 1,
+        "approve_by": 2,
+        "class_obj": "68eb475f196f800c4f0f0c1a",
+        "checkIn_time": "2025-10-12T08:30:00",
+        "checkOut_time": "2025-10-12T11:00:00"
+      }
+    },
+    "delete": {
+      "method": "POST",
+      "url": "/admin/api/v_1/attendance/delete/",
+      "payload": {
+        "id": "68eb476a196f800c4f0f0c1c"
+      }
+    }
+  },
+  "field_descriptions": {
+    "user_fields": {
+      "user_id": "Auto-incremented user ID (integer)",
+      "phone": "User's phone number (string)",
+      "email": "User's email address (string, unique)",
+      "password": "User's password (string, hashed)",
+      "role_id": "MongoDB ObjectId of the role (string)",
+      "name": "User's full name (string)",
+      "address": "User's address (string)",
+      "status": "User's active status (boolean)",
+      "student_id": "Student ID (string, optional)",
+      "since": "Creation timestamp (datetime, auto-generated)"
+    },
+    "role_fields": {
+      "id": "MongoDB ObjectId (string)",
+      "name": "Role name (string)",
+      "since": "Creation timestamp (datetime, auto-generated)"
+    },
+    "notice_fields": {
+      "id": "MongoDB ObjectId (string)",
+      "title": "Notice title (string)",
+      "content": "Notice content (string)",
+      "status": "Notice active status (boolean)",
+      "since": "Creation timestamp (datetime, auto-generated)"
+    },
+    "class_fields": {
+      "id": "MongoDB ObjectId (string)",
+      "name": "Class name (string)",
+      "since": "Creation timestamp (datetime, auto-generated)"
+    },
+    "attendance_fields": {
+      "id": "MongoDB ObjectId (string)",
+      "user": "User ID (integer, user_id from User model)",
+      "approve_by": "Approver's user ID (integer, optional)",
+      "class_obj": "MongoDB ObjectId of the class (string)",
+      "checkIn_time": "Check-in timestamp (datetime)",
+      "checkOut_time": "Check-out timestamp (datetime)",
+      "since": "Creation timestamp (datetime, auto-generated)"
+    }
+  },
+  "delete_operations": {
+    "user_delete": {
+      "method": "POST",
+      "url": "/admin/api/v_1/user/delete/",
+      "payload": {
+        "user_id": 1
+      },
+      "note": "Uses user_id (integer) - different from other models"
+    },
+    "role_delete": {
+      "method": "POST",
+      "url": "/admin/api/v_1/role/delete/",
+      "payload": {
+        "id": "68ebb23bf134573e945cca71"
+      },
+      "note": "Uses MongoDB ObjectId string"
+    },
+    "notice_delete": {
+      "method": "POST",
+      "url": "/admin/api/v_1/notice/delete/",
+      "payload": {
+        "id": "68eb4767196f800c4f0f0c1b"
+      },
+      "note": "Uses MongoDB ObjectId string"
+    },
+    "class_delete": {
+      "method": "POST",
+      "url": "/admin/api/v_1/class/delete/",
+      "payload": {
+        "class_id": "68eb475f196f800c4f0f0c1a"
+      },
+      "note": "Uses class_id (MongoDB ObjectId string) - different field name"
+    },
+    "attendance_delete": {
+      "method": "POST",
+      "url": "/admin/api/v_1/attendance/delete/",
+      "payload": {
+        "id": "68eb476a196f800c4f0f0c1c"
+      },
+      "note": "Uses MongoDB ObjectId string"
+    }
+  },
+  "additional_examples": {
+    "user_sign_up_with_role": {
+      "method": "POST",
+      "url": "/admin/api/v_1/user/sign_up/",
+      "payload": {
+        "phone": "+1234567890",
+        "email": "teacher@school.com",
+        "password": "password123",
+        "role_id": "68eb4753196f800c4f0f0c19",
+        "name": "Teacher User",
+        "address": "456 Teacher Street",
+        "student_id": "TCH001"
+      }
+    },
+    "attendance_with_approver": {
+      "method": "POST",
+      "url": "/admin/api/v_1/attendance/create/",
+      "payload": {
+        "user": 1,
+        "approve_by": 2,
+        "class_obj": "68ebb3cc7c7a1dba85f8fe6f",
+        "checkIn_time": "2025-10-12T08:00:00",
+        "checkOut_time": "2025-10-12T10:00:00"
+      }
+    },
+    "notice_with_status_false": {
+      "method": "POST",
+      "url": "/admin/api/v_1/notice/create/",
+      "payload": {
+        "title": "Inactive Notice",
+        "content": "This notice is inactive",
+        "status": false
+      }
+    }
+  },
+  "response_format": {
+    "success": {
+      "con": true,
+      "data": "Object data or array of objects",
+      "message": "Success",
+      "status": 200,
+      "length": 1
+    },
+    "error": {
+      "con": false,
+      "data": "Error message",
+      "message": "Unsuccessful",
+      "status": 500,
+      "length": 0
+    }
+  }
+}
